@@ -15,21 +15,10 @@ import {
   type InvestmentInWorkCard,
 } from "@entities/investment";
 import { TimeIcon } from "@shared/assets";
+import {InvestmentDefault} from "../lib/investmentDefault.ts";
 
 export const InvestmentList = () => {
-  const [choiceInvestment, setChoiceInvestment] = useState<IInvestmentCard>({
-    id: 1,
-    days: 0,
-    daysText: "",
-    profit: "",
-    invest: "",
-    take: "",
-    time: "",
-    gradientColor: "",
-    gradientEndColor: "",
-    modalColor: "",
-    src: "",
-  });
+  const [choiceInvestment, setChoiceInvestment] = useState<IInvestmentCard>(InvestmentDefault);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [inWorkList, setInWorkList] = useState<InvestmentInWorkCard[]>([]);
 

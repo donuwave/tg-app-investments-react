@@ -18,8 +18,14 @@ import {
   STitleCard,
   SApprove,
   SItem,
-  SItemClose,
+  SItemClose, SImg,
 } from "./investmentChoiceModal.styles";
+
+const Close = () => (
+    <SCloseIcon>
+      <CloseIcon />
+    </SCloseIcon>
+)
 
 export const InvestmentChoiceModal: FC<IInvestmentChoiceModal> = ({
   investment,
@@ -38,26 +44,10 @@ export const InvestmentChoiceModal: FC<IInvestmentChoiceModal> = ({
     <SModal
       open={isOpen}
       onCancel={onClose}
-      footer={null}
-      width={415}
-      centered={false}
-      style={{ top: "170px", height: "70dvh" }}
-      closeIcon={
-        <SCloseIcon>
-          <CloseIcon />
-        </SCloseIcon>
-      }
+      closeIcon={<Close />}
     >
       <SContent $c={investment.modalColor}>
-        <img
-          src={src}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            borderRadius: "20px",
-          }}
-        />
+        <SImg src={src} alt={investment.daysText}/>
 
         <SInfo>
           <SHead>
@@ -70,7 +60,7 @@ export const InvestmentChoiceModal: FC<IInvestmentChoiceModal> = ({
             <SItem>Вложи {investment.invest}</SItem>
             <StarIcon />
             <SItem>{investment.time}</SItem>
-            <SApprove $color={investment.gradientEndColor}>
+            <SApprove $c={investment.gradientEndColor}>
               <ApproveIcon />
             </SApprove>
             <SItemClose>забери {investment.take}</SItemClose>

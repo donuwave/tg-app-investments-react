@@ -1,7 +1,13 @@
 import styled, { css } from "styled-components";
 import { Button, Modal } from "antd";
+import type {SContentProps} from "../model/invisment.types";
 
-export const SModal = styled(Modal)`
+export const SModal = styled(Modal).attrs({
+    style: {top: "170px", height: "70dvh"},
+    centered: false,
+    footer: null,
+    width: 415,
+})`
   & .ant-modal-content {
     padding: 0;
     border-radius: 20px;
@@ -24,13 +30,20 @@ export const SModal = styled(Modal)`
   }
 `;
 
-export const SContent = styled.div<{ $c: string }>`
+export const SContent = styled.div<SContentProps>`
   position: relative;
-  background: ${() =>
-    css`linear-gradient(to bottom, ${({ $c }) => $c} 0%, #000000 100%)`};
+  background: ${({$c}) =>
+    css`linear-gradient(to bottom, ${$c} 0%, #000000 100%)`};
   border-radius: 20px;
   height: 100%;
 `;
+
+export const SImg = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+`
 
 export const SInfo = styled.div`
   position: absolute;
@@ -40,7 +53,7 @@ export const SInfo = styled.div`
   z-index: 5;
 `;
 
-export const SAction = styled(Button)<{ $c: string }>`
+export const SAction = styled(Button)<SContentProps>`
   position: absolute;
   z-index: 5;
   bottom: -90px;
@@ -111,8 +124,8 @@ export const SItemClose = styled.div`
   align-content: start;
 `;
 
-export const SApprove = styled.div<{ $color: string }>`
-  color: ${({ $color }) => $color};
+export const SApprove = styled.div<SContentProps>`
+  color: ${({ $c }) => $c};
   align-self: center;
 `;
 

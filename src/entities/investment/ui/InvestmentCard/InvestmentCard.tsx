@@ -1,6 +1,5 @@
 import { ApproveIcon, ArrowIcon, StarIcon } from "@shared/assets";
 import type { FC } from "react";
-import type { IInvestmentCard } from "@entities/investment";
 import {
   SCard,
   STitleCard,
@@ -10,11 +9,8 @@ import {
   SApprove,
   SInfo,
 } from "./investmentCard.styles";
+import type {InvestmentCardProps} from "../../model/investmentCardProps.types";
 
-interface InvestmentCardProps {
-  onClick: (investment: IInvestmentCard) => void;
-  investment: IInvestmentCard;
-}
 
 export const InvestmentCard: FC<InvestmentCardProps> = ({
   onClick,

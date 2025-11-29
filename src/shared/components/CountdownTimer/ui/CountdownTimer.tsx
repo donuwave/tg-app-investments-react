@@ -8,49 +8,10 @@ import {
   SValue,
   SLabel,
   SColon,
-} from "./CountdownTimer.styles";
+} from "./CountdownTimer.styles.ts";
+import type {CountdownTimerProps, TimeLeft} from "../modal/countdownTimer.types.ts";
+import {getTimeLeft, plural, pad2} from "../lib/countdownTimer.ts";
 
-interface CountdownTimerProps {
-  targetDate: Date | string | number;
-  onEnd?: () => void;
-  className?: string;
-}
-
-type TimeLeft = {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-};
-
-const getTimeLeft = (target: number): TimeLeft => {
-  const now = Date.now();
-  const diff = target - now;
-
-  if (diff <= 0 || !Number.isFinite(diff)) {
-    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  }
-
-  const totalSeconds = Math.floor(diff / 1000);
-  const days = Math.floor(totalSeconds / (60 * 60 * 24));
-  const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
-  const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
-  const seconds = totalSeconds % 60;
-
-  return { days, hours, minutes, seconds };
-};
-
-const plural = (n: number, forms: [string, string, string]) => {
-  const nAbs = Math.abs(n) % 100;
-  const n1 = nAbs % 10;
-
-  if (nAbs > 10 && nAbs < 20) return forms[2];
-  if (n1 > 1 && n1 < 5) return forms[1];
-  if (n1 === 1) return forms[0];
-  return forms[2];
-};
-
-const pad2 = (n: number) => n.toString().padStart(2, "0");
 
 export const CountdownTimer = ({
   targetDate,
@@ -94,7 +55,7 @@ export const CountdownTimer = ({
   return (
     <STimerWrapper className={className}>
       <STimerHeader>
-        <img src="/Subtract.png" />
+        <img src="/Subtract.png" alt="Subtract"/>
         <span>Осталось</span>
       </STimerHeader>
       <STimerBg />
