@@ -1,8 +1,8 @@
-import type {IInvestmentCard} from "@entities/investment";
+import type { InvestmentCard } from "@entities/investment";
 
 export interface IInvestmentChoiceModal {
-  investment: IInvestmentCard;
+  investment: InvestmentCard;
   isOpen: boolean;
   onClose: () => void;
-  onChoice: (card: IInvestmentCard) => void;
+  onChoice: (card: InvestmentCard) => void;
 }

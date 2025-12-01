@@ -1,3 +1,4 @@
+import type { InvestmentInWorkCard } from "@entities/investment";
 import type { FC } from "react";
 import {
   SCard,
@@ -8,7 +9,10 @@ import {
 } from "./investmentInWorkCard.styles";
 import { CountdownTimer } from "@shared/components";
 import { ArrowIcon } from "@shared/assets";
-import type {IInvestmentInWordCard} from "../../model/investmentInWordCard.types";
+
+interface IInvestmentInWordCard {
+  investment: InvestmentInWorkCard;
+}
 
 export const InvestmentInWordCard: FC<IInvestmentInWordCard> = ({
   investment,

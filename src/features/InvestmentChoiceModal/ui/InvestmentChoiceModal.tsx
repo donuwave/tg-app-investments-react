@@ -4,7 +4,7 @@ import {
   CloseIcon,
   StarIcon,
 } from "@shared/assets";
-import type { FC } from "react";
+import { type FC, useEffect } from "react";
 import type { IInvestmentChoiceModal } from "../model/investmentChoiceModal.types";
 import {
   SModal,
@@ -18,14 +18,8 @@ import {
   STitleCard,
   SApprove,
   SItem,
-  SItemClose, SImg,
+  SItemClose,
 } from "./investmentChoiceModal.styles";
-
-const Close = () => (
-    <SCloseIcon>
-      <CloseIcon />
-    </SCloseIcon>
-)
 
 export const InvestmentChoiceModal: FC<IInvestmentChoiceModal> = ({
   investment,
@@ -40,14 +34,41 @@ export const InvestmentChoiceModal: FC<IInvestmentChoiceModal> = ({
     onChoice(investment);
   };
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isOpen]);
+
   return (
     <SModal
       open={isOpen}
       onCancel={onClose}
-      closeIcon={<Close />}
+      footer={null}
+      width={415}
+      centered={false}
+      style={{ top: "170px", height: "70dvh", width: "415px" }}
+      closeIcon={
+        <SCloseIcon>
+          <CloseIcon />
+        </SCloseIcon>
+      }
     >
       <SContent $c={investment.modalColor}>
-        <SImg src={src} alt={investment.daysText}/>
+        <img
+          src={src}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            borderRadius: "20px",
+          }}
+        />
 
         <SInfo>
           <SHead>
@@ -60,7 +81,7 @@ export const InvestmentChoiceModal: FC<IInvestmentChoiceModal> = ({
             <SItem>Вложи {investment.invest}</SItem>
             <StarIcon />
             <SItem>{investment.time}</SItem>
-            <SApprove $c={investment.gradientEndColor}>
+            <SApprove $color={investment.gradientEndColor}>
               <ApproveIcon />
             </SApprove>
             <SItemClose>забери {investment.take}</SItemClose>

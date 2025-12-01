@@ -6,25 +6,21 @@ export const SMenu = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 3;
+  z-index: 10;
   background: transparent;
-  height: 110px;
   margin: 0 auto;
   max-width: 475px;
   padding: 0 30px;
 
   background: ${() =>
     css`linear-gradient(to bottom, transparent 0%, #000000 60%)`};
-
-  @media (max-width: 375px) {
-    height: 100px;
-  }
 `;
 
 export const SContent = styled.nav`
   display: grid;
   grid-template-columns: 1fr 0.5fr 1fr;
   gap: 17px;
+  padding-bottom: 30px;
 `;
 
 export const SButtonMenu = styled(Button)`

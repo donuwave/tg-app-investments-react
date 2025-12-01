@@ -60,6 +60,7 @@ export const SInput = styled(Input).attrs({
 
 export const SDropDown = styled.div`
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 66px;
   gap: 8px;
 

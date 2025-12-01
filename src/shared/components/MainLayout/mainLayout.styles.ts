@@ -2,18 +2,20 @@ import styled from "styled-components";
 
 export const SPage = styled.div`
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   font-family: "Geologica", serif;
   background-color: #000;
   color: ${({ theme }) => theme.colors.text.main};
+  touch-action: manipulation;
+  user-select: none;
 `;
 
 export const SLayout = styled.div`
   position: relative;
   width: 100%;
   max-width: 475px;
-  height: 100vh;
+  height: 100dvh;
   margin: 0 auto;
 
   background-image: url("/layout.png");

@@ -7,6 +7,8 @@ export const SPage = styled.div`
   padding: 60px 15px 0 15px;
   width: 100%;
   color: ${({ theme }) => theme.colors.text.main};
+  touch-action: manipulation;
+  user-select: none;
 `;
 
 export const SLayout = styled.div`
@@ -15,7 +17,7 @@ export const SLayout = styled.div`
   max-width: 475px;
   height: 100%;
   margin: 0 auto;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100dvh - 60px);
   overflow: hidden;
 `;
 
