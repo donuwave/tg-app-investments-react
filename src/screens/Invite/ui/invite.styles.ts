@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
 export const SFrame = styled.div`
-  display: grid;
-  border-radius: 20px;
-  max-height: 714px;
+  position: relative;
+    display: grid;
+    flex: 1;
+    border-radius: 20px;
   overflow: hidden;
+    max-height: 715px;
+    min-height: 100%;
 `;
 
 export const SRectangle = styled.div`
+  display: grid;
+  align-items: end;
   position: relative;
   width: 415px;
-  height: 714px;
   background:
     linear-gradient(
       180deg,
@@ -22,10 +26,19 @@ export const SRectangle = styled.div`
   overflow: visible;
 `;
 
+export const SContentInfo = styled.div`
+    flex: 1;
+    padding-left: 37px;
+    padding-bottom: 77px;
+    display: grid;
+    gap: 20px;
+    z-index: 100;
+`
+
 export const SInviteTitle = styled.div`
-  position: absolute;
   width: 340px;
   height: 98px;
+  padding-bottom: 20px;
   left: calc(50% - 340px / 2 - 0.5px);
   top: 420px;
   font-family: "Dela Gothic One", sans-serif;
@@ -39,11 +52,9 @@ export const SInviteTitle = styled.div`
 `;
 
 export const SInviteSubtitle = styled.div`
-  position: absolute;
   width: 346px;
   height: 56px;
   left: calc(50% - 346px / 2 + 2.5px);
-  top: 540px;
   font-family: "Geologica", serif;
   font-style: normal;
   font-weight: 500;
@@ -89,8 +100,8 @@ export const SInviteDowImage = styled.img`
 
 export const SInviteTopImage = styled.img`
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   width: 200px;
   height: auto;
   object-fit: contain;
@@ -100,8 +111,6 @@ export const SInviteTopImage = styled.img`
 export const SInviteButtonContainer = styled.div`
   width: 415px;
   height: 66px;
-  left: 30px;
-  top: 838px;
 `;
 
 export const SInviteButton = styled.button`

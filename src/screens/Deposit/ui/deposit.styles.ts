@@ -10,10 +10,10 @@ export const SWalletTitle = styled.h5`
 `;
 
 export const SHead = styled.div`
-  background: linear-gradient(to bottom, transparent 0%, #000000 90%);
-  padding: 15px 25px 15px 30px;
-  margin-right: -30px;
-  margin-left: -30px;
+    background: linear-gradient(to bottom, transparent 0%, #000000 90%);
+    padding: 15px 30px;
+    margin-right: -30px;
+    margin-left: -30px;
 `;
 
 export const SLabel = styled.div`
@@ -24,7 +24,7 @@ export const SLabel = styled.div`
 `;
 
 export const SSegmentedWallet = styled(Segmented)`
-  width: 425px;
+  width: 415px;
   height: 66px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -71,7 +71,7 @@ export const SSegmentedWallet = styled(Segmented)`
 `;
 
 export const SAmountSection = styled.div`
-  width: 425px;
+  width: 415px;
   margin: 0 auto;
   box-sizing: border-box;
   background: #0f1011;
@@ -272,7 +272,7 @@ export const SNetworkCards = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  width: 425px;
+  width: 415px;
   margin-left: auto;
   margin-right: auto;
 `;
@@ -280,7 +280,6 @@ export const SNetworkCards = styled.div`
 export const SNetworkCard = styled.div`
   box-sizing: border-box;
   position: relative;
-  width: 207px;
   height: 126px;
   background: #0f1011;
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -388,11 +387,21 @@ export const SSelectedText = styled.span`
   vertical-align: middle;
 `;
 
-export const SContinueButton = styled(Button)`
-  width: 100%;
-  max-width: 415px;
-  margin: 0 auto;
+export const SContinue = styled.div`
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: transparent;
+    margin: 0 auto;
+    max-width: 475px;
+    padding: 0 30px;
+    bottom: 130px;
+    width: 100%;
+    display: grid;
+`
 
+export const SContinueButton = styled(Button)`
   &.ant-btn {
     background: #001900;
     color: ${({ theme }) => theme.colors.active.main};
@@ -545,12 +554,22 @@ export const SWithdrawalWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
-
-  padding-right: 23px;
-  padding-left: 32px;
-  margin-right: -30px;
-  margin-left: -30px;
+  padding-bottom: 205px;
 `;
+
+export const SWithdrawal = styled.div`
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1020;
+    background: transparent;
+    margin: 0 auto;
+    max-width: 475px;
+    padding: 0 30px;
+    bottom: 130px;
+    width: 100%;
+    display: grid;
+`
 
 export const SWithdrawalButton = styled(Button)`
   height: 66px;
@@ -560,7 +579,7 @@ export const SWithdrawalButton = styled(Button)`
   gap: 8px;
 
   &.ant-btn {
-    background: rgba(1, 251, 1, 0.1);
+    background: #011a01;
     border: none;
     border-radius: 20px;
     font-family: "Geologica", serif;
@@ -580,21 +599,25 @@ export const SWithdrawalButtonIcon = styled.svg`
   flex-shrink: 0;
 `;
 
-export const SDepositContent = styled.div`
-  background: ${({ theme }) => theme.colors.background.primary};
+export const SDeposit = styled.div`
   display: grid;
+  gap: 15px;
+  padding-bottom: 205px;
+`
+
+export const SDepositContent = styled.div`
+  position: relative;
+  background: ${({ theme }) => theme.colors.background.primary};
   overflow-y: auto;
   overflow-x: hidden;
-  gap: 15px;
   min-height: 0;
-  padding-right: 25px;
+  padding-right: 30px;
   padding-left: 30px;
   margin-right: -30px;
   margin-left: -30px;
-  padding-bottom: 135px;
 
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 0;
   }
 
   &::-webkit-scrollbar-track {
@@ -611,11 +634,12 @@ export const SHistoryContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0;
+    padding-bottom: 120px;
 `;
 
 export const SHistoryItem = styled.div`
   box-sizing: border-box;
-  width: 432px;
+  width: 415px;
   height: 82px;
   margin: 0 auto 15px;
   background: #0f1011;

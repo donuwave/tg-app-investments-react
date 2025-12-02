@@ -1,25 +1,25 @@
 import { InviteLayout } from "./InviteLayout";
 import {
-  SFrame,
-  SRectangle,
-  SInviteTitle,
-  SInviteSubtitle,
-  SInviteImage,
-  SInviteMonImage,
-  SInviteDowImage,
-  SInviteTopImage,
-  SInviteButtonContainer,
-  SInviteButton,
-  SInviteButtonText,
+    SFrame,
+    SRectangle,
+    SInviteTitle,
+    SInviteSubtitle,
+    SInviteImage,
+    SInviteMonImage,
+    SInviteDowImage,
+    SInviteTopImage,
+    SInviteButtonContainer,
+    SInviteButton,
+    SInviteButtonText, SContentInfo,
 } from "./invite.styles";
 import styled from "styled-components";
 
 const SContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  justify-content: start;
-  padding: 60px 0 120px 0;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 60px 0 120px 0;
 `;
 
 export const Invite = () => {
@@ -32,10 +32,12 @@ export const Invite = () => {
             <SInviteImage src="/chili.png" alt="Chili" />
             <SInviteMonImage />
             <SInviteDowImage src="/dow.png" alt="Dow" />
-            <SInviteTitle>Приглашай друзей</SInviteTitle>
-            <SInviteSubtitle>
-              и зарабатывай на реферальной системе !
-            </SInviteSubtitle>
+            <SContentInfo>
+              <SInviteTitle>Приглашай друзей</SInviteTitle>
+              <SInviteSubtitle>
+                и зарабатывай на реферальной системе !
+              </SInviteSubtitle>
+            </SContentInfo>
           </SRectangle>
         </SFrame>
         <SInviteButtonContainer>

@@ -65,7 +65,7 @@ import {
   SHead,
   SDropDown,
   SLabel,
-  SDollar,
+  SDollar, SContinue, SDeposit, SWithdrawal,
 } from "./deposit.styles";
 import { SBackdrop } from "../../Profile/ui/profile.styles.ts";
 import { ActiveBadge, InactiveBadge } from "@entities/profile";
@@ -221,7 +221,7 @@ export const Deposit = () => {
 
       <SDepositContent>
         {selectedTab === "Депозит" && (
-          <>
+          <SDeposit>
             <SBackdrop visible={isCurrencyDropdownOpen} />
 
             <SAmountSection>
@@ -318,10 +318,12 @@ export const Deposit = () => {
               })}
             </SNetworkCards>
 
-            <SContinueButton size="large" type="primary">
-              Продолжить
-            </SContinueButton>
-          </>
+            <SContinue>
+              <SContinueButton size="large" type="primary">
+                Продолжить
+              </SContinueButton>
+            </SContinue>
+          </SDeposit>
         )}
 
         {selectedTab === "Вывод" && (
@@ -361,23 +363,25 @@ export const Deposit = () => {
               />
             </SWithdrawalAddressContainer>
 
-            <SWithdrawalButton size="large" type="primary">
-              <SWithdrawalButtonIcon
-                width="19"
-                height="19"
-                viewBox="0 0 19 19"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M19 9.5C19 14.7467 14.7467 19 9.5 19C4.25329 19 0 14.7467 0 9.5C0 4.25329 4.25329 0 9.5 0C14.7467 0 19 4.25329 19 9.5ZM13.3288 6.62119C13.6071 6.89943 13.6071 7.35056 13.3288 7.62881L8.57881 12.3788C8.30057 12.6571 7.84943 12.6571 7.57119 12.3788L5.67119 10.4788C5.39294 10.2006 5.39294 9.74943 5.67119 9.47119C5.94943 9.19294 6.40057 9.19294 6.67881 9.47119L8.075 10.8674L10.1981 8.74428L12.3212 6.62119C12.5994 6.34294 13.0506 6.34294 13.3288 6.62119Z"
-                  fill="#01FB01"
-                />
-              </SWithdrawalButtonIcon>
-              Вывести средства
-            </SWithdrawalButton>
+            <SWithdrawal>
+              <SWithdrawalButton size="large" type="primary">
+                <SWithdrawalButtonIcon
+                    width="19"
+                    height="19"
+                    viewBox="0 0 19 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M19 9.5C19 14.7467 14.7467 19 9.5 19C4.25329 19 0 14.7467 0 9.5C0 4.25329 4.25329 0 9.5 0C14.7467 0 19 4.25329 19 9.5ZM13.3288 6.62119C13.6071 6.89943 13.6071 7.35056 13.3288 7.62881L8.57881 12.3788C8.30057 12.6571 7.84943 12.6571 7.57119 12.3788L5.67119 10.4788C5.39294 10.2006 5.39294 9.74943 5.67119 9.47119C5.94943 9.19294 6.40057 9.19294 6.67881 9.47119L8.075 10.8674L10.1981 8.74428L12.3212 6.62119C12.5994 6.34294 13.0506 6.34294 13.3288 6.62119Z"
+                      fill="#01FB01"
+                  />
+                </SWithdrawalButtonIcon>
+                Вывести средства
+              </SWithdrawalButton>
+            </SWithdrawal>
           </SWithdrawalWrapper>
         )}
 
