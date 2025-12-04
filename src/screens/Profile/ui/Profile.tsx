@@ -23,11 +23,12 @@ import {
   PresentationIcon,
   ProfileIcon,
 } from "@shared/assets";
-import { Button, Dropdown, type MenuProps } from "antd";
+import {Button, Dropdown, type MenuProps} from "antd";
 import { type MouseEventHandler, useMemo, useState } from "react";
 import { ActiveBadge, InactiveBadge } from "@entities/profile";
 import { languages } from "../lib/lang.items.ts";
 import { ProfileLayout } from "@shared/components";
+import {Modal} from "@shared/components/Modal/Modal.tsx";
 
 const LangItemLabel = ({ text, active }: { text: string; active: boolean }) => (
   <SLabelDropdown>
@@ -38,6 +39,7 @@ const LangItemLabel = ({ text, active }: { text: string; active: boolean }) => (
 
 export const Profile = () => {
   const [selectedLang, setSelectedLang] = useState<string>("ru");
+  const [isOpenInstruction, setIsOpenInstruction] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const lang = languages.find((el) => el.key === selectedLang)?.label;
@@ -74,78 +76,84 @@ export const Profile = () => {
   };
 
   return (
-    <ProfileLayout>
-      <STitle>Профиль</STitle>
-      <SWrapperImg>
-        <SImg>
-          <SIcon>
-            <ProfileIcon />
-          </SIcon>
-          <img src="/profile.png" />
-        </SImg>
-      </SWrapperImg>
+      <>
+        <Modal open={isOpenInstruction} onClose={() => setIsOpenInstruction(false)}/>
 
-      <SForm>
-        <SFormItem>
-          <SLabel>Никнейм</SLabel>
-          <SInput size="large" placeholder="Никнейм" />
-        </SFormItem>
-        <SFormItem>
-          <SLabel>Почта</SLabel>
-          <SInput size="large" placeholder="Почта" />
-        </SFormItem>
-        <SFormItem>
-          <SLabel>Язык</SLabel>
+        <ProfileLayout>
+          <STitle>Профиль</STitle>
+          <SWrapperImg>
+            <SImg>
+              <SIcon>
+                <ProfileIcon />
+              </SIcon>
+              <img src="/profile.png" />
+            </SImg>
+          </SWrapperImg>
 
-          <SBackdrop visible={isOpen} />
+          <SForm>
+            <SFormItem>
+              <SLabel>Никнейм</SLabel>
+              <SInput size="large" placeholder="Никнейм" />
+            </SFormItem>
+            <SFormItem>
+              <SLabel>Почта</SLabel>
+              <SInput size="large" placeholder="Почта" />
+            </SFormItem>
+            <SFormItem>
+              <SLabel>Язык</SLabel>
 
-          <Dropdown
-            open={isOpen}
-            onOpenChange={handleCloseDropdown}
-            placement="bottomCenter"
-            align={{ offset: [0, 30] }}
-            menu={{
-              items,
-              selectedKeys: [selectedLang],
-              onClick: handleChoiceLang,
-            }}
-            trigger={["click"]}
-          >
-            <SDropDown>
-              <SInputDropdown
-                value={lang}
-                size="large"
-                placeholder="Язык"
-                onMouseDown={handleInputReset}
-              />
-              <Button
-                onClick={handleToggleDropdown}
-                size="large"
-                icon={<ArrowDownIcon />}
-              />
-            </SDropDown>
-          </Dropdown>
-        </SFormItem>
-      </SForm>
+              <SBackdrop visible={isOpen} />
 
-      <SActions>
-        <SAction size="large" icon={<ManualIcon />}>
-          Инструкция
-        </SAction>
-        <SAction size="large" icon={<PresentationIcon />}>
-          Призентация
-        </SAction>
-        <SAction size="large" icon={<InvestorsIcon />}>
-          Инвесторам
-        </SAction>
-        <SAction size="large" icon={<PartnersIcon />}>
-          Партнерам
-        </SAction>
-      </SActions>
+              <Dropdown
+                  open={isOpen}
+                  onOpenChange={handleCloseDropdown}
+                  placement="bottomCenter"
+                  align={{ offset: [0, 30] }}
+                  menu={{
+                    items,
+                    selectedKeys: [selectedLang],
+                    onClick: handleChoiceLang,
+                  }}
+                  trigger={["click"]}
+              >
+                <SDropDown>
+                  <SInputDropdown
+                      value={lang}
+                      size="large"
+                      placeholder="Язык"
+                      onMouseDown={handleInputReset}
+                  />
+                  <Button
+                      onClick={handleToggleDropdown}
+                      size="large"
+                      icon={<ArrowDownIcon />}
+                  />
+                </SDropDown>
+              </Dropdown>
+            </SFormItem>
+          </SForm>
 
-      <SChangePassword danger type="dashed">
-        Сменить пароль
-      </SChangePassword>
-    </ProfileLayout>
+          <SActions>
+            <SAction onClick={() => setIsOpenInstruction(true)} size="large" icon={<ManualIcon />}>
+              Инструкция
+            </SAction>
+            <SAction size="large" icon={<PresentationIcon />}>
+              Призентация
+            </SAction>
+            <SAction size="large" icon={<InvestorsIcon />}>
+              Инвесторам
+            </SAction>
+            <SAction size="large" icon={<PartnersIcon />}>
+              Партнерам
+            </SAction>
+          </SActions>
+
+          <SChangePassword danger type="dashed">
+            Сменить пароль
+          </SChangePassword>
+        </ProfileLayout>
+      </>
+
+
   );
 };
