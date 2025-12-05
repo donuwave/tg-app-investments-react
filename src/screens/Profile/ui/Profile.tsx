@@ -27,8 +27,7 @@ import {Button, Dropdown, type MenuProps} from "antd";
 import { type MouseEventHandler, useMemo, useState } from "react";
 import { ActiveBadge, InactiveBadge } from "@entities/profile";
 import { languages } from "../lib/lang.items.ts";
-import { ProfileLayout } from "@shared/components";
-import {Modal} from "@shared/components/Modal/Modal.tsx";
+import { ProfileLayout, Modal } from "@shared/components";
 
 const LangItemLabel = ({ text, active }: { text: string; active: boolean }) => (
   <SLabelDropdown>
