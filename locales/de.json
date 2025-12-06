@@ -1,0 +1,115 @@
+{
+  "auth": {
+    "welcome_1": "Willkommen",
+    "welcome_2": "bei",
+    "welcome_3": "MEME-DAO",
+
+    "create_title": "Passwort erstellen",
+    "verify_title": "Passwort eingeben",
+    "forgot_old_title": "Altes Passwort",
+    "new_password_title": "Neues Passwort",
+
+    "wrong_password": "Falsches Passwort",
+
+    "forgot_button": "Passwort vergessen?",
+    "back_button": "Zurück"
+  },
+  "profile": {
+    "title": "Profil",
+    "nickname": "Spitzname",
+    "email": "E-Mail",
+    "language": "Sprache",
+    "language_label": "Sprache",
+    "instruction": "Anleitung",
+    "presentation": "Präsentation",
+    "investors": "Für Investoren",
+    "partners": "Für Partner",
+    "change_password": "Passwort ändern",
+    "select": "Auswählen",
+    "selected": "Ausgewählt"
+  },
+  "invite": {
+    "title": "Lade Freunde ein",
+    "subtitle": "und verdiene mit dem Empfehlungsprogramm!",
+    "get_link": "Link erhalten"
+  },
+  "home": {
+    "balance": "Gesamtbalance",
+    "profit_24h": "Gewinn in 24 Stunden",
+    "deposit": "Einzahlung"
+  },
+  "investment": {
+    "investments": "Investitionen",
+    "in_work": "In Arbeit",
+    "invest": "Investiere",
+    "take": "erhalte",
+    "accept": "Akzeptieren",
+    "plans": {
+      "1": {
+        "daysText": "1 Tag",
+        "time": "in 1 Tag"
+      },
+      "2": {
+        "daysText": "2 Tage",
+        "time": "in 2 Tagen"
+      },
+      "3": {
+        "daysText": "3 Tage",
+        "time": "in 3 Tagen"
+      },
+      "4": {
+        "daysText": "7 Tage",
+        "time": "in einer Woche"
+      },
+      "5": {
+        "daysText": "14 Tage",
+        "time": "in 14 Tagen"
+      },
+      "6": {
+        "daysText": "20 Tage",
+        "time": "in 20 Tagen"
+      }
+    }
+  },
+
+  "deposit": {
+    "balance": "Gesamtbalance",
+    "profit_24h": "Gewinn in 24 Stunden",
+
+    "wallet": "Wallet",
+    "tab_deposit": "Einzahlung",
+    "tab_withdraw": "Auszahlung",
+    "tab_history": "Verlauf",
+
+    "amount": "Betrag",
+    "select_currency": "Währung auswählen",
+    "select": "Auswählen",
+    "selected": "Ausgewählt",
+    "continue": "Fortfahren",
+
+    "withdraw_amount": "Betrag",
+    "withdraw_available": "Verfügbar zur Auszahlung",
+    "withdraw_fee": "Gebühr",
+
+    "wallet_address": "Wallet-Adresse",
+    "wallet_address_placeholder": "Adresse im TRC-20 Netzwerk",
+    "withdraw_button": "Geld auszahlen",
+
+    "history_withdraw": "Auszahlung",
+    "history_deposit": "Einzahlung",
+    "history_canceled": "Abgebrochen",
+    "history_received": "Erhalten",
+    "history_sent": "Gesendet",
+    "history_earned": "Verdient",
+    "history_invest": "Investitionen",
+    "history_partner": "Partnerprogramm",
+    "history_invested": "Investiert"
+  },
+  "menu": {
+    "help": "Hilfe",
+    "profile": "Profil"
+  },
+  "date": {
+    "nov_short": "Nov."
+  }
+}

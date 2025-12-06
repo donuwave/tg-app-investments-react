@@ -6,7 +6,7 @@ import {
   SListCard,
   STopTitleInWork,
 } from "./investmentList.styles";
-import { investments } from "../lib/investments";
+import { useLocalizedInvestments } from "../lib/investments";
 import { InvestmentChoiceModal } from "@features/InvestmentChoiceModal";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -16,6 +16,7 @@ import {
   type InvestmentInWorkCard,
 } from "@entities/investment";
 import { TimeIcon } from "@shared/assets";
+import { useTranslation } from "react-i18next";
 
 interface InvestmentListProps {
   onInWorkChange?: (hasInWork: boolean) => void;
@@ -39,6 +40,8 @@ export const InvestmentList = ({ onInWorkChange }: InvestmentListProps) => {
   });
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [inWorkList, setInWorkList] = useState<InvestmentInWorkCard[]>([]);
+  const { t } = useTranslation();
+  const investments = useLocalizedInvestments();
 
   const listRef = useRef<HTMLDivElement | null>(null);
   const inWorkRef = useRef<HTMLDivElement | null>(null);
@@ -149,11 +152,11 @@ export const InvestmentList = ({ onInWorkChange }: InvestmentListProps) => {
       />
 
       {activeTitle === "Инвестиции" ? (
-        <STopTitle>{activeTitle}</STopTitle>
+        <STopTitle>{t("investment.investments")}</STopTitle>
       ) : (
         <STopTitleInWork>
           <TimeIcon />
-          {activeTitle}
+          {t("investment.in_work")}
         </STopTitleInWork>
       )}
 
@@ -167,7 +170,7 @@ export const InvestmentList = ({ onInWorkChange }: InvestmentListProps) => {
         )}
 
         <SListCard ref={investmentsRef}>
-          {isWork && <STitle>Инвестиции</STitle>}
+          {isWork && <STitle>{t("investment.investments")}</STitle>}
 
           {investments.map((el) => (
             <InvestmentCard

@@ -20,6 +20,7 @@ import {
   SItem,
   SItemClose,
 } from "./investmentChoiceModal.styles";
+import { useTranslation } from "react-i18next";
 
 export const InvestmentChoiceModal: FC<IInvestmentChoiceModal> = ({
   investment,
@@ -27,6 +28,7 @@ export const InvestmentChoiceModal: FC<IInvestmentChoiceModal> = ({
   isOpen,
   onChoice,
 }) => {
+  const { t } = useTranslation();
   const src = investment.src + "-modal.png";
 
   const handleAction = () => {
@@ -78,13 +80,17 @@ export const InvestmentChoiceModal: FC<IInvestmentChoiceModal> = ({
 
           <SLine>
             <StarIcon />
-            <SItem>Вложи {investment.invest}</SItem>
+            <SItem>
+              {t("investment.invest")} {investment.invest}
+            </SItem>
             <StarIcon />
             <SItem>{investment.time}</SItem>
             <SApprove $color={investment.gradientEndColor}>
               <ApproveIcon />
             </SApprove>
-            <SItemClose>забери {investment.take}</SItemClose>
+            <SItemClose>
+              {t("investment.take")} {investment.take}
+            </SItemClose>
           </SLine>
         </SInfo>
 
@@ -93,7 +99,7 @@ export const InvestmentChoiceModal: FC<IInvestmentChoiceModal> = ({
           $c={investment.gradientEndColor}
           icon={<ApproveCircleIcon />}
         >
-          Принять
+          {t("investment.accept")}
         </SAction>
       </SContent>
     </SModal>

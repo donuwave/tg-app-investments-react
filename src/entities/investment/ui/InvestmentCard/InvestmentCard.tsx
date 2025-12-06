@@ -10,6 +10,7 @@ import {
   SApprove,
   SInfo,
 } from "./investmentCard.styles";
+import { useTranslation } from "react-i18next";
 
 interface InvestmentCardProps {
   onClick: (investment: IInvestmentCard) => void;
@@ -20,6 +21,8 @@ export const InvestmentCard: FC<InvestmentCardProps> = ({
   onClick,
   investment,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <SCard
       key={investment.id}
@@ -36,11 +39,15 @@ export const InvestmentCard: FC<InvestmentCardProps> = ({
         </SHead>
 
         <SLine>
-          <div>Вложи {investment.invest}</div>
+          <div>
+            {t("investment.invest")} {investment.invest}
+          </div>
           <StarIcon />
           <div>{investment.time}</div>
           <StarIcon />
-          <div>забери {investment.take}</div>
+          <div>
+            {t("investment.take")} {investment.take}
+          </div>
           <SApprove $color={investment.gradientEndColor}>
             <ApproveIcon />
           </SApprove>

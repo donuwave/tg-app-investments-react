@@ -1,0 +1,114 @@
+{
+  "auth": {
+    "welcome_1": "Bienvenido",
+    "welcome_2": "a",
+    "welcome_3": "MEME-DAO",
+
+    "create_title": "Crea una contraseña",
+    "verify_title": "Ingresa tu contraseña",
+    "forgot_old_title": "Contraseña anterior",
+    "new_password_title": "Nueva contraseña",
+
+    "wrong_password": "Contraseña incorrecta",
+
+    "forgot_button": "¿Olvidaste la contraseña?",
+    "back_button": "Atrás"
+  },
+  "profile": {
+    "title": "Perfil",
+    "nickname": "Apodo",
+    "email": "Correo",
+    "language": "Idioma",
+    "language_label": "Idioma",
+    "instruction": "Instrucción",
+    "presentation": "Presentación",
+    "investors": "Para Inversores",
+    "partners": "Para Socios",
+    "change_password": "Cambiar la contraseña",
+    "select": "Seleccionar",
+    "selected": "Seleccionado"
+  },
+  "invite": {
+    "title": "Invita a tus amigos",
+    "subtitle": "y gana con el sistema de referidos!",
+    "get_link": "Obtener enlace"
+  },
+  "home": {
+    "balance": "Saldo total",
+    "profit_24h": "de ganancia en 24 horas",
+    "deposit": "Depósito"
+  },
+  "investment": {
+    "investments": "Inversiones",
+    "in_work": "En trabajo",
+    "invest": "Invierte",
+    "take": "toma",
+    "accept": "Aceptar",
+    "plans": {
+      "1": {
+        "daysText": "1 Día",
+        "time": "en 1 día"
+      },
+      "2": {
+        "daysText": "2 Días",
+        "time": "en 2 días"
+      },
+      "3": {
+        "daysText": "3 Días",
+        "time": "en 3 días"
+      },
+      "4": {
+        "daysText": "7 Días",
+        "time": "en una semana"
+      },
+      "5": {
+        "daysText": "14 Días",
+        "time": "en 14 días"
+      },
+      "6": {
+        "daysText": "20 Días",
+        "time": "en 20 días"
+      }
+    }
+  },
+  "deposit": {
+    "balance": "Saldo total",
+    "profit_24h": "de ganancia en 24 horas",
+
+    "wallet": "Billetera",
+    "tab_deposit": "Depósito",
+    "tab_withdraw": "Retiro",
+    "tab_history": "Historial",
+
+    "amount": "Cantidad",
+    "select_currency": "Seleccionar moneda",
+    "select": "Seleccionar",
+    "selected": "Seleccionado",
+    "continue": "Continuar",
+
+    "withdraw_amount": "Cantidad",
+    "withdraw_available": "Disponible para retirar",
+    "withdraw_fee": "Comisión",
+
+    "wallet_address": "Dirección de billetera",
+    "wallet_address_placeholder": "Dirección en red TRC-20",
+    "withdraw_button": "Retirar fondos",
+
+    "history_withdraw": "Retiro",
+    "history_deposit": "Depósito",
+    "history_canceled": "Cancelado",
+    "history_received": "Recibido",
+    "history_sent": "Enviado",
+    "history_earned": "Ganado",
+    "history_invest": "Inversiones",
+    "history_partner": "Afiliados",
+    "history_invested": "Invertido"
+  },
+  "menu": {
+    "help": "Ayuda",
+    "profile": "Perfil"
+  },
+  "date": {
+    "nov_short": "nov."
+  }
+}

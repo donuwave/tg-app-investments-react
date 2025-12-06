@@ -20,6 +20,7 @@ export default defineConfig({
       "@shared": path.resolve(__dirname, "src/shared"),
       "@pages": path.resolve(__dirname, "src/pages"),
       "@processes": path.resolve(__dirname, "src/processes"),
+      "@locales": path.resolve(__dirname, "locales"),
     },
   },
 });

@@ -65,7 +65,10 @@ import {
   SHead,
   SDropDown,
   SLabel,
-  SDollar, SContinue, SDeposit, SWithdrawal,
+  SDollar,
+  SContinue,
+  SDeposit,
+  SWithdrawal,
 } from "./deposit.styles";
 import { SBackdrop } from "../../Profile/ui/profile.styles.ts";
 import { ActiveBadge, InactiveBadge } from "@entities/profile";
@@ -73,9 +76,14 @@ import { ConclusionIcon } from "@shared/assets/ConclusionIcon.tsx";
 import { DepositPaymentIcon } from "@shared/assets/DepositPaymentIcon.tsx";
 import { HistoryIcon } from "@shared/assets/HistoryIcon.tsx";
 import { ArrowIcons } from "@shared/assets/ArrowIcons.tsx";
+import { useTranslation } from "react-i18next";
 
 export const Deposit = () => {
-  const [selectedTab, setSelectedTab] = useState("Депозит");
+  const { t } = useTranslation();
+
+  const [selectedTab, setSelectedTab] = useState<
+    "deposit" | "withdraw" | "history"
+  >("deposit");
   const [selectedNetwork, setSelectedNetwork] = useState("Ethereum ETH");
   const [amount, setAmount] = useState("0.00");
   const [withdrawalAmount, setWithdrawalAmount] = useState("0.00");
@@ -96,7 +104,7 @@ export const Deposit = () => {
     }
 
     if (parts[0].length > 1 && parts[0].startsWith("0")) {
-      parts[0] = String(Number(parts[0])); // "00" -> "0"
+      parts[0] = String(Number(parts[0]));
       v = parts[1] !== undefined ? `${parts[0]}.${parts[1]}` : parts[0];
     }
 
@@ -170,62 +178,64 @@ export const Deposit = () => {
     <MainLayout>
       <SHeader>
         <div>
-          <STitle>Общий баланс</STitle>
+          <STitle>{t("deposit.balance")}</STitle>
           <InvestmentPrice />
         </div>
 
         <SProfitContainer>
           <SProfitText>
             <ArrowIcons />
-            $132 прибыли за 24 часа
+            {`$132 ${t("deposit.profit_24h")}`}
           </SProfitText>
         </SProfitContainer>
       </SHeader>
 
       <SHead>
-        <SWalletTitle>Кошелёк</SWalletTitle>
+        <SWalletTitle>{t("deposit.wallet")}</SWalletTitle>
         <SSegmentedWallet
           value={selectedTab}
-          onChange={(val) => setSelectedTab(val as string)}
+          onChange={(val) =>
+            setSelectedTab(val as "deposit" | "withdraw" | "history")
+          }
           options={[
             {
               label: (
                 <SLabel>
                   <ConclusionIcon />
-                  Депозит
+                  {t("deposit.tab_deposit")}
                 </SLabel>
               ),
-              value: "Депозит",
+              value: "deposit",
             },
             {
               label: (
                 <SLabel>
                   <DepositPaymentIcon />
-                  Вывод
+                  {t("deposit.tab_withdraw")}
                 </SLabel>
               ),
-              value: "Вывод",
+              value: "withdraw",
             },
             {
               label: (
                 <SLabel>
                   <HistoryIcon />
-                  История
+                  {t("deposit.tab_history")}
                 </SLabel>
               ),
-              value: "История",
+              value: "history",
             },
           ]}
         />
       </SHead>
 
       <SDepositContent>
-        {selectedTab === "Депозит" && (
+        {selectedTab === "deposit" && (
           <SDeposit>
             <SBackdrop visible={isCurrencyDropdownOpen} />
 
             <SAmountSection>
-              <SAmountLabel>Сумма</SAmountLabel>
+              <SAmountLabel>{t("deposit.amount")}</SAmountLabel>
               <Dropdown
                 open={isCurrencyDropdownOpen}
                 onOpenChange={(open) => setIsCurrencyDropdownOpen(open)}
@@ -307,10 +317,10 @@ export const Deposit = () => {
                               fill="#01FB01"
                             />
                           </SCheckIcon>
-                          <SSelectedText>Выбрано</SSelectedText>
+                          <SSelectedText>{t("deposit.selected")}</SSelectedText>
                         </>
                       ) : (
-                        "Выбрать"
+                        t("deposit.select")
                       )}
                     </ButtonComponent>
                   </CardComponent>
@@ -320,16 +330,18 @@ export const Deposit = () => {
 
             <SContinue>
               <SContinueButton size="large" type="primary">
-                Продолжить
+                {t("deposit.continue")}
               </SContinueButton>
             </SContinue>
           </SDeposit>
         )}
 
-        {selectedTab === "Вывод" && (
+        {selectedTab === "withdraw" && (
           <SWithdrawalWrapper>
             <SWithdrawalContainer>
-              <SWithdrawalAmountLabel>Сумма</SWithdrawalAmountLabel>
+              <SWithdrawalAmountLabel>
+                {t("deposit.withdraw_amount")}
+              </SWithdrawalAmountLabel>
               <SWithdrawalInputWrapper>
                 <SDollar>$</SDollar>
                 <SWithdrawalInput
@@ -342,50 +354,54 @@ export const Deposit = () => {
               <SWithdrawalInfo>
                 <SWithdrawalInfoRow>
                   <SWithdrawalInfoLabel>
-                    Доступно для вывода
+                    {t("deposit.withdraw_available")}
                   </SWithdrawalInfoLabel>
                   <SWithdrawalInfoValue>$3,213.80</SWithdrawalInfoValue>
                 </SWithdrawalInfoRow>
                 <SWithdrawalInfoRow>
-                  <SWithdrawalInfoLabel>Комиссия</SWithdrawalInfoLabel>
+                  <SWithdrawalInfoLabel>
+                    {t("deposit.withdraw_fee")}
+                  </SWithdrawalInfoLabel>
                   <SWithdrawalInfoValue>$0.00</SWithdrawalInfoValue>
                 </SWithdrawalInfoRow>
               </SWithdrawalInfo>
             </SWithdrawalContainer>
 
             <SWithdrawalAddressContainer>
-              <SWithdrawalAddressLabel>Адрес кошелька</SWithdrawalAddressLabel>
+              <SWithdrawalAddressLabel>
+                {t("deposit.wallet_address")}
+              </SWithdrawalAddressLabel>
               <SWithdrawalAddressInput
                 size="large"
                 value={withdrawalAddress}
                 onChange={(e) => setWithdrawalAddress(e.target.value)}
-                placeholder="Адрес в сети TRC-20"
+                placeholder={t("deposit.wallet_address_placeholder")}
               />
             </SWithdrawalAddressContainer>
 
             <SWithdrawal>
               <SWithdrawalButton size="large" type="primary">
                 <SWithdrawalButtonIcon
-                    width="19"
-                    height="19"
-                    viewBox="0 0 19 19"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                  width="19"
+                  height="19"
+                  viewBox="0 0 19 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M19 9.5C19 14.7467 14.7467 19 9.5 19C4.25329 19 0 14.7467 0 9.5C0 4.25329 4.25329 0 9.5 0C14.7467 0 19 4.25329 19 9.5ZM13.3288 6.62119C13.6071 6.89943 13.6071 7.35056 13.3288 7.62881L8.57881 12.3788C8.30057 12.6571 7.84943 12.6571 7.57119 12.3788L5.67119 10.4788C5.39294 10.2006 5.39294 9.74943 5.67119 9.47119C5.94943 9.19294 6.40057 9.19294 6.67881 9.47119L8.075 10.8674L10.1981 8.74428L12.3212 6.62119C12.5994 6.34294 13.0506 6.34294 13.3288 6.62119Z"
-                      fill="#01FB01"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M19 9.5C19 14.7467 14.7467 19 9.5 19C4.25329 19 0 14.7467 0 9.5C0 4.25329 4.25329 0 9.5 0C14.7467 0 19 4.25329 19 9.5ZM13.3288 6.62119C13.6071 6.89943 13.6071 7.35056 13.3288 7.62881L8.57881 12.3788C8.30057 12.6571 7.84943 12.6571 7.57119 12.3788L5.67119 10.4788C5.39294 10.2006 5.39294 9.74943 5.67119 9.47119C5.94943 9.19294 6.40057 9.19294 6.67881 9.47119L8.075 10.8674L10.1981 8.74428L12.3212 6.62119C12.5994 6.34294 13.0506 6.34294 13.3288 6.62119Z"
+                    fill="#01FB01"
                   />
                 </SWithdrawalButtonIcon>
-                Вывести средства
+                {t("deposit.withdraw_button")}
               </SWithdrawalButton>
             </SWithdrawal>
           </SWithdrawalWrapper>
         )}
 
-        {selectedTab === "История" && (
+        {selectedTab === "history" && (
           <SHistoryContainer>
             <SHistoryItem>
               <SHistoryIconContainer>
@@ -415,12 +431,14 @@ export const Deposit = () => {
                 </SHistoryIcon>
               </SHistoryIconContainer>
               <SHistoryContent>
-                <SHistoryType>Вывод</SHistoryType>
-                <SHistoryDate>7 нояб. 2025 г. в 20:40</SHistoryDate>
+                <SHistoryType>{t("deposit.history_withdraw")}</SHistoryType>
+                <SHistoryDate>
+                  7 {t("date.nov_short")} 2025 г. в 20:40
+                </SHistoryDate>
               </SHistoryContent>
               <div style={{ marginLeft: "auto", textAlign: "right" }}>
                 <SHistoryAmount>$150</SHistoryAmount>
-                <SHistoryStatus>Отправлено</SHistoryStatus>
+                <SHistoryStatus>{t("deposit.history_sent")}</SHistoryStatus>
               </div>
             </SHistoryItem>
 
@@ -452,12 +470,16 @@ export const Deposit = () => {
                 </SHistoryIconDeposit>
               </SHistoryIconContainerDeposit>
               <SHistoryContent>
-                <SHistoryType>Депозит</SHistoryType>
-                <SHistoryDate>7 нояб. 2025 г. в 20:40</SHistoryDate>
+                <SHistoryType>{t("deposit.history_deposit")}</SHistoryType>
+                <SHistoryDate>
+                  7 {t("date.nov_short")} 2025 г. в 20:40
+                </SHistoryDate>
               </SHistoryContent>
               <div style={{ marginLeft: "auto", textAlign: "right" }}>
                 <SHistoryAmountDeposit>+$150</SHistoryAmountDeposit>
-                <SHistoryStatusDeposit>Получено</SHistoryStatusDeposit>
+                <SHistoryStatusDeposit>
+                  {t("deposit.history_received")}
+                </SHistoryStatusDeposit>
               </div>
             </SHistoryItem>
 
@@ -479,12 +501,16 @@ export const Deposit = () => {
                 </SHistoryIconCanceled>
               </SHistoryIconContainerCanceled>
               <SHistoryContent>
-                <SHistoryType>Депозит</SHistoryType>
-                <SHistoryDate>7 нояб. 2025 г. в 20:40</SHistoryDate>
+                <SHistoryType>{t("deposit.history_deposit")}</SHistoryType>
+                <SHistoryDate>
+                  7 {t("date.nov_short")} 2025 г. в 20:40
+                </SHistoryDate>
               </SHistoryContent>
               <div style={{ marginLeft: "auto", textAlign: "right" }}>
                 <SHistoryAmountCanceled>$150</SHistoryAmountCanceled>
-                <SHistoryStatusCanceled>Отменено</SHistoryStatusCanceled>
+                <SHistoryStatusCanceled>
+                  {t("deposit.history_canceled")}
+                </SHistoryStatusCanceled>
               </div>
             </SHistoryItem>
 
@@ -511,12 +537,16 @@ export const Deposit = () => {
                 </SHistoryIconInvestment>
               </SHistoryIconContainerDeposit>
               <SHistoryContent>
-                <SHistoryType>Инвестиции</SHistoryType>
-                <SHistoryDate>7 нояб. 2025 г. в 20:40</SHistoryDate>
+                <SHistoryType>{t("deposit.history_invest")}</SHistoryType>
+                <SHistoryDate>
+                  7 {t("date.nov_short")} 2025 г. в 20:40
+                </SHistoryDate>
               </SHistoryContent>
               <div style={{ marginLeft: "auto", textAlign: "right" }}>
                 <SHistoryAmountDeposit>+$150</SHistoryAmountDeposit>
-                <SHistoryStatusDeposit>Заработано</SHistoryStatusDeposit>
+                <SHistoryStatusDeposit>
+                  {t("deposit.history_earned")}
+                </SHistoryStatusDeposit>
               </div>
             </SHistoryItem>
 
@@ -543,12 +573,16 @@ export const Deposit = () => {
                 </SHistoryIconInvestmentYellow>
               </SHistoryIconContainer>
               <SHistoryContent>
-                <SHistoryType>Инвестиции</SHistoryType>
-                <SHistoryDate>7 нояб. 2025 г. в 20:40</SHistoryDate>
+                <SHistoryType>{t("deposit.history_invest")}</SHistoryType>
+                <SHistoryDate>
+                  7 {t("date.nov_short")} 2025 г. в 20:40
+                </SHistoryDate>
               </SHistoryContent>
               <div style={{ marginLeft: "auto", textAlign: "right" }}>
                 <SHistoryAmountYellow>-$150</SHistoryAmountYellow>
-                <SHistoryStatusYellow>Вложено</SHistoryStatusYellow>
+                <SHistoryStatusYellow>
+                  {t("deposit.history_invested")}
+                </SHistoryStatusYellow>
               </div>
             </SHistoryItem>
 
@@ -575,12 +609,16 @@ export const Deposit = () => {
                 </SHistoryIconInvestment>
               </SHistoryIconContainerDeposit>
               <SHistoryContent>
-                <SHistoryType>Партнерка</SHistoryType>
-                <SHistoryDate>7 нояб. 2025 г. в 20:40</SHistoryDate>
+                <SHistoryType>{t("deposit.history_partner")}</SHistoryType>
+                <SHistoryDate>
+                  7 {t("date.nov_short")} 2025 г. в 20:40
+                </SHistoryDate>
               </SHistoryContent>
               <div style={{ marginLeft: "auto", textAlign: "right" }}>
                 <SHistoryAmountDeposit>+$150</SHistoryAmountDeposit>
-                <SHistoryStatusDeposit>Заработано</SHistoryStatusDeposit>
+                <SHistoryStatusDeposit>
+                  {t("deposit.history_earned")}
+                </SHistoryStatusDeposit>
               </div>
             </SHistoryItem>
           </SHistoryContainer>

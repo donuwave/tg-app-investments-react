@@ -18,3 +18,4 @@ export * from "./TimeBgIcon";
 export * from "./TimeIcon";
 export * from "./ClockOutlinedIcon";
 export * from "./ArrowIcon";
+export * from "./ArrowIcons";

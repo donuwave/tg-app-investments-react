@@ -1,0 +1,114 @@
+{
+  "auth": {
+    "welcome_1": "Добро",
+    "welcome_2": "пожаловать в",
+    "welcome_3": "MEME-DAO",
+
+    "create_title": "Придумайте пароль",
+    "verify_title": "Введите пароль",
+    "forgot_old_title": "Старый пароль",
+    "new_password_title": "Новый пароль",
+
+    "wrong_password": "Неверный пароль",
+
+    "forgot_button": "Забыли пароль?",
+    "back_button": "Назад"
+  },
+  "profile": {
+    "title": "Профиль",
+    "nickname": "Никнейм",
+    "email": "Почта",
+    "language": "Язык",
+    "language_label": "Язык",
+    "instruction": "Инструкция",
+    "presentation": "Презентация",
+    "investors": "Инвесторам",
+    "partners": "Партнерам",
+    "change_password": "Сменить пароль",
+    "select": "Выбрать",
+    "selected": "Выбрано"
+  },
+  "invite": {
+    "title": "Приглашай друзей",
+    "subtitle": "и зарабатывай на реферальной системе!",
+    "get_link": "Получить ссылку"
+  },
+  "home": {
+    "balance": "Общий баланс",
+    "profit_24h": "прибыли за 24 часа",
+    "deposit": "Депозит"
+  },
+  "investment": {
+    "investments": "Инвестиции",
+    "in_work": "В работе",
+    "invest": "Вложи",
+    "take": "забери",
+    "accept": "Принять",
+    "plans": {
+      "1": {
+        "daysText": "1 День",
+        "time": "через 1 день"
+      },
+      "2": {
+        "daysText": "2 Дня",
+        "time": "через 2 дня"
+      },
+      "3": {
+        "daysText": "3 Дня",
+        "time": "через 3 дня"
+      },
+      "4": {
+        "daysText": "7 Дней",
+        "time": "через неделю"
+      },
+      "5": {
+        "daysText": "14 Дней",
+        "time": "через 14 дней"
+      },
+      "6": {
+        "daysText": "20 Дней",
+        "time": "через 20 дней"
+      }
+    }
+  },
+  "deposit": {
+    "balance": "Общий баланс",
+    "profit_24h": "прибыли за 24 часа",
+
+    "wallet": "Кошелёк",
+    "tab_deposit": "Депозит",
+    "tab_withdraw": "Вывод",
+    "tab_history": "История",
+
+    "amount": "Сумма",
+    "select_currency": "Выбрать валюту",
+    "select": "Выбрать",
+    "selected": "Выбрано",
+    "continue": "Продолжить",
+
+    "withdraw_amount": "Сумма",
+    "withdraw_available": "Доступно для вывода",
+    "withdraw_fee": "Комиссия",
+
+    "wallet_address": "Адрес кошелька",
+    "wallet_address_placeholder": "Адрес в сети TRC-20",
+    "withdraw_button": "Вывести средства",
+
+    "history_withdraw": "Вывод",
+    "history_deposit": "Депозит",
+    "history_canceled": "Отменено",
+    "history_received": "Получено",
+    "history_sent": "Отправлено",
+    "history_earned": "Заработано",
+    "history_invest": "Инвестиции",
+    "history_partner": "Партнёрка",
+    "history_invested": "Вложено"
+  },
+  "menu": {
+    "help": "Помощь",
+    "profile": "Профиль"
+  },
+  "date": {
+    "nov_short": "нояб."
+  }
+}

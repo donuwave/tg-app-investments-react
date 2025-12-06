@@ -25,6 +25,7 @@ export const SContent = styled.nav`
 
 export const SButtonMenu = styled(Button)`
   &.ant-btn {
+    display: grid;
     height: 80px;
     width: 100%;
     border-radius: 21px;

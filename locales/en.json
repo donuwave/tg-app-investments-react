@@ -1,0 +1,115 @@
+{
+  "auth": {
+    "welcome_1": "Welcome",
+    "welcome_2": "to",
+    "welcome_3": "MEME-DAO",
+
+    "create_title": "Create a password",
+    "verify_title": "Enter your password",
+    "forgot_old_title": "Old password",
+    "new_password_title": "New password",
+
+    "wrong_password": "Incorrect password",
+
+    "forgot_button": "Forgot password?",
+    "back_button": "Back"
+  },
+  "profile": {
+    "title": "Profile",
+    "nickname": "Nickname",
+    "email": "Email",
+    "language": "Language",
+    "language_label": "Language",
+    "instruction": "Instruction",
+    "presentation": "Presentation",
+    "investors": "For Investors",
+    "partners": "For Partners",
+    "change_password": "Change Password",
+    "select": "Select",
+    "selected": "Selected"
+  },
+
+  "invite": {
+    "title": "Invite friends",
+    "subtitle": "and earn through the referral system!",
+    "get_link": "Get link"
+  },
+  "home": {
+    "balance": "Total balance",
+    "profit_24h": "profit in 24 hours",
+    "deposit": "Deposit"
+  },
+  "investment": {
+    "investments": "Investments",
+    "in_work": "In work",
+    "invest": "Invest",
+    "take": "take",
+    "accept": "Accept",
+    "plans": {
+      "1": {
+        "daysText": "1 Day",
+        "time": "in 1 day"
+      },
+      "2": {
+        "daysText": "2 Days",
+        "time": "in 2 days"
+      },
+      "3": {
+        "daysText": "3 Days",
+        "time": "in 3 days"
+      },
+      "4": {
+        "daysText": "7 Days",
+        "time": "in a week"
+      },
+      "5": {
+        "daysText": "14 Days",
+        "time": "in 14 days"
+      },
+      "6": {
+        "daysText": "20 Days",
+        "time": "in 20 days"
+      }
+    }
+  },
+  "deposit": {
+    "balance": "Total balance",
+    "profit_24h": "profit in 24 hours",
+
+    "wallet": "Wallet",
+    "tab_deposit": "Deposit",
+    "tab_withdraw": "Withdraw",
+    "tab_history": "History",
+
+    "amount": "Amount",
+    "select_currency": "Select currency",
+    "select": "Select",
+    "selected": "Selected",
+    "continue": "Continue",
+
+    "withdraw_amount": "Amount",
+    "withdraw_available": "Available to withdraw",
+    "withdraw_fee": "Fee",
+
+    "wallet_address": "Wallet address",
+    "wallet_address_placeholder": "Address in TRC-20 network",
+    "withdraw_button": "Withdraw funds",
+
+    "history_withdraw": "Withdraw",
+    "history_deposit": "Deposit",
+    "history_canceled": "Canceled",
+    "history_received": "Received",
+    "history_sent": "Sent",
+    "history_earned": "Earned",
+    "history_invest": "Investments",
+    "history_partner": "Affiliate",
+    "history_invested": "Invested"
+  },
+  "menu": {
+    "help": "Help",
+    "profile": "Profile"
+  },
+  "date": {
+    "nov_short": "Nov."
+  }
+}

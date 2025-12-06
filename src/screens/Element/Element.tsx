@@ -2,6 +2,7 @@ import { XIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/ui/button";
+import { useTranslation } from "react-i18next";
 
 const numpadButtons = [
   { number: "1", gridPos: "row-start-1 col-start-1" },
@@ -20,6 +21,7 @@ type Stage = "create" | "verify" | "forgot" | "forgot-verify";
 
 export const Element = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const storedPasswordFromStorage = localStorage.getItem("meme_dao_password");
   const [stage, setStage] = useState<Stage>(
     storedPasswordFromStorage ? "verify" : "create",
@@ -70,14 +72,14 @@ export const Element = () => {
         setPassword("");
         navigate("/home");
       } else {
-        setError("Неверный пароль");
+        setError(t("auth.wrong_password"));
       }
     } else if (stage === "forgot") {
       if (password === storedPassword) {
         setPassword("");
         setStage("forgot-verify");
       } else {
-        setError("Неверный пароль");
+        setError(t("auth.wrong_password"));
       }
     } else if (stage === "forgot-verify") {
       localStorage.setItem("meme_dao_password", password);
@@ -111,10 +113,10 @@ export const Element = () => {
   };
 
   const getTitle = () => {
-    if (stage === "create") return "Придумайте пароль";
-    if (stage === "verify") return "Введите пароль";
-    if (stage === "forgot") return "Старый пароль";
-    return "Новый пароль";
+    if (stage === "create") return t("auth.create_title");
+    if (stage === "verify") return t("auth.verify_title");
+    if (stage === "forgot") return t("auth.forgot_old_title");
+    return t("auth.new_password_title");
   };
 
   const shouldShowHeader = stage === "create";
@@ -139,14 +141,14 @@ export const Element = () => {
         {shouldShowHeader && (
           <div className="flex flex-col items-start px-4">
             <h1 className="w-full [font-family:'Dela_Gothic_One',Helvetica] text-4xl sm:text-4xl md:text-[47px] leading-tight font-normal text-white tracking-[0] text-left">
-              Добро
+              {t("auth.welcome_1")}
             </h1>
             <h1 className="w-full [font-family:'Dela_Gothic_One',Helvetica] text-4xl sm:text-4xl leading-tight font-normal text-white tracking-[0] text-left">
-              пожаловать в
+              {t("auth.welcome_2")}
             </h1>
 
             <h2 className="[font-family:'Dela_Gothic_One',Helvetica] font-normal text-white text-5xl sm:text-5xl md:text-[54px] tracking-[0] leading-tight text-left">
-              MEME-DAO
+              {t("auth.welcome_3")}
             </h2>
           </div>
         )}
@@ -184,7 +186,9 @@ export const Element = () => {
               onClick={stage === "verify" ? handleForgot : handleBack}
               className="text-center text-[#01FB01] underline [font-family:'Geologica',Helvetica] font-normal text-base hover:opacity-80 transition-opacity touch-manipulation select-none"
             >
-              {stage === "verify" ? "Забыли пароль?" : "Назад"}
+              {stage === "verify"
+                ? t("auth.forgot_button")
+                : t("auth.back_button")}
             </button>
           )}
 

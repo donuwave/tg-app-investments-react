@@ -23,11 +23,12 @@ import {
   PresentationIcon,
   ProfileIcon,
 } from "@shared/assets";
-import {Button, Dropdown, type MenuProps} from "antd";
+import { Button, Dropdown, type MenuProps } from "antd";
 import { type MouseEventHandler, useMemo, useState } from "react";
 import { ActiveBadge, InactiveBadge } from "@entities/profile";
 import { languages } from "../lib/lang.items.ts";
 import { ProfileLayout, Modal } from "@shared/components";
+import { useTranslation } from "react-i18next";
 
 const LangItemLabel = ({ text, active }: { text: string; active: boolean }) => (
   <SLabelDropdown>
@@ -37,9 +38,11 @@ const LangItemLabel = ({ text, active }: { text: string; active: boolean }) => (
 );
 
 export const Profile = () => {
-  const [selectedLang, setSelectedLang] = useState<string>("ru");
+  const savedLang = localStorage.getItem("app_language") || "ru";
+  const [selectedLang, setSelectedLang] = useState<string>(savedLang);
   const [isOpenInstruction, setIsOpenInstruction] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { i18n, t } = useTranslation();
 
   const lang = languages.find((el) => el.key === selectedLang)?.label;
 
@@ -66,6 +69,8 @@ export const Profile = () => {
 
   const handleChoiceLang: MenuProps["onClick"] = ({ key }) => {
     setSelectedLang(key);
+    i18n.changeLanguage(key);
+    localStorage.setItem("app_language", key);
     setIsOpen(false);
   };
 
@@ -75,84 +80,89 @@ export const Profile = () => {
   };
 
   return (
-      <>
-        <Modal open={isOpenInstruction} onClose={() => setIsOpenInstruction(false)}/>
+    <>
+      <Modal
+        open={isOpenInstruction}
+        onClose={() => setIsOpenInstruction(false)}
+      />
 
-        <ProfileLayout>
-          <STitle>Профиль</STitle>
-          <SWrapperImg>
-            <SImg>
-              <SIcon>
-                <ProfileIcon />
-              </SIcon>
-              <img src="/profile.png" />
-            </SImg>
-          </SWrapperImg>
+      <ProfileLayout>
+        <STitle>{t("profile.title")}</STitle>
+        <SWrapperImg>
+          <SImg>
+            <SIcon>
+              <ProfileIcon />
+            </SIcon>
+            <img src="/profile.png" />
+          </SImg>
+        </SWrapperImg>
 
-          <SForm>
-            <SFormItem>
-              <SLabel>Никнейм</SLabel>
-              <SInput size="large" placeholder="Никнейм" />
-            </SFormItem>
-            <SFormItem>
-              <SLabel>Почта</SLabel>
-              <SInput size="large" placeholder="Почта" />
-            </SFormItem>
-            <SFormItem>
-              <SLabel>Язык</SLabel>
+        <SForm>
+          <SFormItem>
+            <SLabel>{t("profile.nickname")}</SLabel>
+            <SInput size="large" placeholder={t("profile.nickname")} />
+          </SFormItem>
+          <SFormItem>
+            <SLabel>{t("profile.email")}</SLabel>
+            <SInput size="large" placeholder={t("profile.email")} />
+          </SFormItem>
+          <SFormItem>
+            <SLabel>{t("profile.language")}</SLabel>
 
-              <SBackdrop visible={isOpen} />
+            <SBackdrop visible={isOpen} />
 
-              <Dropdown
-                  open={isOpen}
-                  onOpenChange={handleCloseDropdown}
-                  placement="bottomCenter"
-                  align={{ offset: [0, 30] }}
-                  menu={{
-                    items,
-                    selectedKeys: [selectedLang],
-                    onClick: handleChoiceLang,
-                  }}
-                  trigger={["click"]}
-              >
-                <SDropDown>
-                  <SInputDropdown
-                      value={lang}
-                      size="large"
-                      placeholder="Язык"
-                      onMouseDown={handleInputReset}
-                  />
-                  <Button
-                      onClick={handleToggleDropdown}
-                      size="large"
-                      icon={<ArrowDownIcon />}
-                  />
-                </SDropDown>
-              </Dropdown>
-            </SFormItem>
-          </SForm>
+            <Dropdown
+              open={isOpen}
+              onOpenChange={handleCloseDropdown}
+              placement="bottomCenter"
+              align={{ offset: [0, 30] }}
+              menu={{
+                items,
+                selectedKeys: [selectedLang],
+                onClick: handleChoiceLang,
+              }}
+              trigger={["click"]}
+            >
+              <SDropDown>
+                <SInputDropdown
+                  value={lang}
+                  size="large"
+                  placeholder={t("profile.language")}
+                  onMouseDown={handleInputReset}
+                />
+                <Button
+                  onClick={handleToggleDropdown}
+                  size="large"
+                  icon={<ArrowDownIcon />}
+                />
+              </SDropDown>
+            </Dropdown>
+          </SFormItem>
+        </SForm>
 
-          <SActions>
-            <SAction onClick={() => setIsOpenInstruction(true)} size="large" icon={<ManualIcon />}>
-              Инструкция
-            </SAction>
-            <SAction size="large" icon={<PresentationIcon />}>
-              Призентация
-            </SAction>
-            <SAction size="large" icon={<InvestorsIcon />}>
-              Инвесторам
-            </SAction>
-            <SAction size="large" icon={<PartnersIcon />}>
-              Партнерам
-            </SAction>
-          </SActions>
+        <SActions>
+          <SAction
+            onClick={() => setIsOpenInstruction(true)}
+            size="large"
+            icon={<ManualIcon />}
+          >
+            {t("profile.instruction")}
+          </SAction>
+          <SAction size="large" icon={<PresentationIcon />}>
+            {t("profile.presentation")}
+          </SAction>
+          <SAction size="large" icon={<InvestorsIcon />}>
+            {t("profile.investors")}
+          </SAction>
+          <SAction size="large" icon={<PartnersIcon />}>
+            {t("profile.partners")}
+          </SAction>
+        </SActions>
 
-          <SChangePassword danger type="dashed">
-            Сменить пароль
-          </SChangePassword>
-        </ProfileLayout>
-      </>
-
-
+        <SChangePassword danger type="dashed">
+          {t("profile.partners")}
+        </SChangePassword>
+      </ProfileLayout>
+    </>
   );
 };

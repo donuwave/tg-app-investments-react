@@ -11,16 +11,19 @@ import {
 import { InvestmentPrice } from "@entities/investment";
 import { InvestmentList } from "@widgets/InvismentsList";
 import { useState } from "react";
-import { ArrowIcons } from "@shared/assets/ArrowIcons.tsx";
+import { ArrowIcons } from "@shared/assets";
+
+import { useTranslation } from "react-i18next";
 
 export const HomePage = () => {
+  const { t } = useTranslation();
   const [hasInWorkInvestments, setHasInWorkInvestments] = useState(false);
 
   return (
     <MainLayout>
       <SHeader>
         <div>
-          <STitle>Общий баланс</STitle>
+          <STitle>{t("home.balance")}</STitle>
           <InvestmentPrice />
         </div>
 
@@ -28,7 +31,7 @@ export const HomePage = () => {
           <SProfitContainer>
             <SProfitText>
               <ArrowIcons />
-              $132 прибыли за 24 часа
+              $132 {t("home.profit_24h")}
             </SProfitText>
           </SProfitContainer>
         )}
@@ -36,7 +39,7 @@ export const HomePage = () => {
         <SRightContainer>
           {!hasInWorkInvestments && (
             <>
-              <SButton>Депозит</SButton>
+              <SButton>{t("home.deposit")}</SButton>
               <SIcon>
                 <PulseRing />
               </SIcon>

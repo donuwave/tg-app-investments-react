@@ -1,6 +1,7 @@
 import type { IInvestmentCard } from "@entities/investment";
+import { useTranslation } from "react-i18next";
 
-export const investments: IInvestmentCard[] = [
+const investments: IInvestmentCard[] = [
   {
     id: 1,
     days: 1,
@@ -80,3 +81,13 @@ export const investments: IInvestmentCard[] = [
     src: "/sixth",
   },
 ];
+
+export const useLocalizedInvestments = (): IInvestmentCard[] => {
+  const { t } = useTranslation();
+
+  return investments.map((inv) => ({
+    ...inv,
+    daysText: t(`investment.plans.${inv.id}.daysText`),
+    time: t(`investment.plans.${inv.id}.time`),
+  }));
+};
